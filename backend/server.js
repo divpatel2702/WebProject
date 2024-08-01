@@ -24,6 +24,36 @@ mongoose.connect(mongoURI, {
 // Routes
 app.use('/products', productRoutes);
 
+// Checkout route
+app.post('/checkout', (req, res) => {
+  const { cartItems, userInfo } = req.body;
+
+  if (!cartItems || !userInfo) {
+    return res.status(400).json({ message: 'Invalid request data' });
+  }
+
+
+  console.log('Processing payment for:', cartItems);
+  console.log('User Info:', userInfo);
+
+  
+  const success = true; 
+
+  if (success) {
+    
+    res.status(200).json({ message: 'Payment successful!' });
+  } else {
+    
+    res.status(500).json({ message: 'Payment failed!' });
+  }
+});
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
+});
+
 // Start server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

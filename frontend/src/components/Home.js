@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './Home.css'; // Import the specific CSS for the Home component
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -18,15 +19,19 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h1>Product List</h1>
-      <ul>
-        {products.map(product => (
-          <li key={product._id}>
-            <Link to={`/product/${product._id}`}>{product.name}</Link>
-          </li>
+      <div className="products">
+        {products.map((product) => (
+          <div key={product._id} className="product">
+            <Link to={`/product/${product._id}`}>
+              <img src={product.imageUrl || 'https://via.placeholder.com/300'} alt={product.name} />
+              <h3>{product.name}</h3>
+              <p>${product.price.toFixed(2)}</p>
+            </Link>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

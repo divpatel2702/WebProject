@@ -50,7 +50,7 @@
 }
 
 .add-product-container input[type="number"] {
-    -moz-appearance: textfield; /* Hide number input spin buttons for Firefox */
+    -moz-appearance: textfield; 
 }
 
 .add-product-container input[type="number"]::-webkit-outer-spin-button,
