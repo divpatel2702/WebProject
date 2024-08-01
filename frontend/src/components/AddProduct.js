@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './AddProduct.css';
 
-
 function AddProduct() {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -38,34 +37,29 @@ function AddProduct() {
   };
 
   return (
-    <div>
+    <div className="add-product-container">
       <h1>Add Product</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Name:
+          <span className="form-label">Name:</span>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
         </label>
-        <br />
         <label>
-          Price:
+          <span className="form-label">Price:</span>
           <input type="number" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)} required />
         </label>
-        <br />
         <label>
-          Category:
+          <span className="form-label">Category:</span>
           <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} required />
         </label>
-        <br />
         <label>
-          Description:
+          <span className="form-label">Description:</span>
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
         </label>
-        <br />
         <label>
-          Image URL:
+          <span className="form-label">Image URL:</span>
           <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
         </label>
-        <br />
         <button type="submit">Add Product</button>
       </form>
     </div>

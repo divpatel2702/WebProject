@@ -6,6 +6,7 @@ import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Navbar from './components/Navbar';
 import { CartProvider } from './contexts/CartContext'; 
+import './App.css';
 
 function App() {
   return (

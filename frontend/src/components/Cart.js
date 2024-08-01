@@ -9,7 +9,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/products'); 
+        const response = await axios.get('http://localhost:5000/products');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products', error);
@@ -21,10 +21,12 @@ const Cart = () => {
 
   const cartProductDetails = cartItems.map(cartItem => {
     const product = products.find(p => p.id === cartItem.id);
-    return {
-      ...cartItem,
-      ...product,
-    };
+    if (product) {
+      return { ...cartItem, ...product };
+    } else {
+      console.warn(`Product with id ${cartItem.id} not found.`);
+      return cartItem;
+    }
   });
 
   const handleRemove = (id) => {
@@ -32,11 +34,18 @@ const Cart = () => {
   };
 
   const handleQuantityChange = (id, newQuantity) => {
-    updateQuantity(id, newQuantity);
+    if (newQuantity > 0) {
+      updateQuantity(id, newQuantity);
+    }
   };
 
   const calculateTotal = () => {
-    return cartProductDetails.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+    return cartProductDetails.reduce((total, item) => {
+      if (item.price && item.quantity) {
+        return total + item.price * item.quantity;
+      }
+      return total;
+    }, 0).toFixed(2);
   };
 
   return (
@@ -50,12 +59,12 @@ const Cart = () => {
             <li key={item.id}>
               <div>
                 <h2>{item.name}</h2>
-                <p>Price: ${item.price.toFixed(2)}</p>
+                <p>Price: ${item.price ? item.price.toFixed(2) : 'N/A'}</p>
                 <p>Quantity: 
                   <input
                     type="number"
                     value={item.quantity}
-                    onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+                    onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
                     min="1"
                   />
                 </p>

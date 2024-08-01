@@ -1,20 +1,68 @@
-.container {
-  padding: 20px;
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
 }
 
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Categories */
 .categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 .category {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.category:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
+}
+
+/* Products */
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -22,28 +70,73 @@
 }
 
 .product {
-  border: 1px solid #ddd;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
   padding: 20px;
-  border-radius: 5px;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.product:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
 }
 
 .product img {
   max-width: 100%;
+  border-radius: 8px;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  background-color: #333;
+.product h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
 }
 
-nav a {
+.product p {
+  color: #555;
+}
+
+/* Buttons */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
   color: white;
-  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-nav a:hover {
-  text-decoration: underline;
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav .logo {
+    margin-bottom: 10px;
+  }
+
+  .categories {
+    flex-direction: column;
+  }
+
+  .category {
+    width: 100%;
+  }
 }
