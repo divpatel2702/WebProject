@@ -11,7 +11,8 @@ import AdminDashboard from './components/AdminDashboard';
 import AdminCRUD from './components/AdminCRUD';
 import Navbar from './components/Navbar';
 import { CartProvider } from './contexts/CartContext'; 
-//import AdminCRUDCategories from './components/AdminCRUDCategories';
+import AdminCRUDCategories from './components/AdminCRUDCategories';
+import ProductList from './components/ProductList';
 
 import './App.css';
 
@@ -30,6 +31,8 @@ function App() {
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-dashboard/manage" element={<AdminCRUD />} />
+          <Route path="/admin-dashboard/manage" element={<ProductList />} />
+          <Route path="/admin-dashboard/manage-categories" element={<AdminCRUDCategories />} />
 
         </Routes>
       </Router>

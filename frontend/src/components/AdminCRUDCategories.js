@@ -6,10 +6,15 @@ const AdminCRUDCategories = () => {
   const [form, setForm] = useState({ name: '' });
   const [editingCategory, setEditingCategory] = useState(null);
 
+  // Fetch categories from the server when the component mounts
   useEffect(() => {
     const fetchData = async () => {
-      const categoriesResponse = await axios.get('/categories');
-      setCategories(categoriesResponse.data);
+      try {
+        const response = await axios.get('http://localhost:5000/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Fetch error:', error);
+      }
     };
 
     fetchData();
@@ -22,15 +27,19 @@ const AdminCRUDCategories = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (editingCategory) {
-      await axios.put(`/categories/${editingCategory._id}`, form);
-      setEditingCategory(null);
-    } else {
-      await axios.post('/categories/add', form);
+    try {
+      if (editingCategory) {
+        await axios.put(`http://localhost:5000/categories/${editingCategory._id}`, form);
+        setEditingCategory(null);
+      } else {
+        await axios.post('http://localhost:5000/categories/add', form);
+      }
+      setForm({ name: '' });
+      const response = await axios.get('http://localhost:5000/categories');
+      setCategories(response.data);
+    } catch (error) {
+      console.error('Submit error:', error);
     }
-    setForm({ name: '' });
-    const categoriesResponse = await axios.get('/categories');
-    setCategories(categoriesResponse.data);
   };
 
   const handleEdit = (category) => {
@@ -39,9 +48,13 @@ const AdminCRUDCategories = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`/categories/${id}`);
-    const categoriesResponse = await axios.get('/categories');
-    setCategories(categoriesResponse.data);
+    try {
+      await axios.delete(`http://localhost:5000/categories/${id}`);
+      const response = await axios.get('http://localhost:5000/categories');
+      setCategories(response.data);
+    } catch (error) {
+      console.error('Delete error:', error);
+    }
   };
 
   return (

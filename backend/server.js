@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const productRoutes = require('./routes/products');
 const itemRoutes = require('./routes/items');
+const categoryRoutes = require('./routes/categories'); 
 
 // Initialize Express
 const app = express();
@@ -11,7 +12,7 @@ const port = 5000;
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json()); // Parses application/json
+app.use(bodyParser.json());
 
 // MongoDB connection
 const mongoURI = 'mongodb+srv://divpatel27:qwiH1GUolu6lUQMk@cluster0.01pkvgs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
@@ -24,6 +25,7 @@ mongoose.connect(mongoURI, {
 
 // Routes
 app.use('/products', productRoutes);
+app.use('/categories', categoryRoutes); // Ensure this is correct
 app.use('/items', itemRoutes);
 
 // Checkout route
@@ -34,18 +36,14 @@ app.post('/checkout', (req, res) => {
     return res.status(400).json({ message: 'Invalid request data' });
   }
 
-
   console.log('Processing payment for:', cartItems);
   console.log('User Info:', userInfo);
 
-  
-  const success = true; 
+  const success = true; // Simulate payment success
 
   if (success) {
-    
     res.status(200).json({ message: 'Payment successful!' });
   } else {
-    
     res.status(500).json({ message: 'Payment failed!' });
   }
 });
