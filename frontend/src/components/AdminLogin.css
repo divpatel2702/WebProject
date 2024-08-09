@@ -1,0 +1,41 @@
+/* AdminLogin.css */
+
+.admin-login {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .admin-login h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .admin-login form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-login input {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .admin-login button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .admin-login button:hover {
+    background-color: #0056b3;
+  }
+  
+  .admin-login .error {
+    color: red;
+    margin-top: 10px;
+  }
+  

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const productRoutes = require('./routes/products');
+const itemRoutes = require('./routes/items');
 
 // Initialize Express
 const app = express();
@@ -23,6 +24,7 @@ mongoose.connect(mongoURI, {
 
 // Routes
 app.use('/products', productRoutes);
+app.use('/items', itemRoutes);
 
 // Checkout route
 app.post('/checkout', (req, res) => {
