@@ -15,8 +15,7 @@ const CheckoutForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Typically, you would send this data to a backend for processing.
-    // Simulate processing with a confirmation message.
+  
     setConfirmationMessage('Purchase confirmed! Redirecting to order summary...');
     setTimeout(() => {
       // Redirect to the order summary page

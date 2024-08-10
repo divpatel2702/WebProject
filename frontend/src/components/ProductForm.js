@@ -6,7 +6,7 @@ const ProductForm = ({ selectedProduct, onProductUpdated, categories }) => {
     name: '',
     price: '',
     description: '',
-    category: '', // New field for category
+    category: '', 
   });
 
   useEffect(() => {

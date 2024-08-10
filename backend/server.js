@@ -25,7 +25,7 @@ mongoose.connect(mongoURI, {
 
 // Routes
 app.use('/products', productRoutes);
-app.use('/categories', categoryRoutes); // Ensure this is correct
+app.use('/categories', categoryRoutes); 
 app.use('/items', itemRoutes);
 
 // Checkout route
@@ -39,7 +39,7 @@ app.post('/checkout', (req, res) => {
   console.log('Processing payment for:', cartItems);
   console.log('User Info:', userInfo);
 
-  const success = true; // Simulate payment success
+  const success = true; 
 
   if (success) {
     res.status(200).json({ message: 'Payment successful!' });

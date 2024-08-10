@@ -24,7 +24,7 @@ function AddProduct() {
         }
       });
       alert('Product added successfully');
-      // Reset form
+      
       setName('');
       setPrice('');
       setCategory('');

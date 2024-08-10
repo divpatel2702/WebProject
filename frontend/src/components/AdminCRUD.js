@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ProductForm from './ProductForm.js'; // Assuming you have a ProductForm component
+import ProductForm from './ProductForm.js'; 
 
 const AdminCRUD = () => {
   const [products, setProducts] = useState([]);
@@ -50,7 +50,7 @@ const AdminCRUD = () => {
       <ProductForm 
         selectedProduct={selectedProduct} 
         onProductUpdated={fetchProducts} 
-        categories={categories} // Pass categories to the form
+        categories={categories} 
       />
       <h3>Products List</h3>
       <ul>
